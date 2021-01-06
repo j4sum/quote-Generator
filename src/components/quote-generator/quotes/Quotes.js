@@ -14,26 +14,24 @@ const Quotes = () => {
   const FETCH_URL = `https://quote-garden.herokuapp.com/api/v3/quotes/?author=${author}`;
   const FETCH_AUTHORS_URL = `https://quote-garden.herokuapp.com/api/v3/authors`;
 
-  async function fetchQuotes() {
-    const request = await axios.get(FETCH_URL);
-  }
-
   // fetching data on first mount
-  async function fetchQuotes() {
-    setLoading(true);
-    try {
-      await axios.get(FETCH_URL).then((res) => {
-        setQuotes(res.data.data);
-      });
-      setLoading(false);
-    } catch (error) {
-      console.log(error.message);
-    }
-    const request = await axios.get(FETCH_URL);
-    setQuotes(request.data.data);
-  }
+ 
 
   useEffect(() => {
+    async function fetchQuotes() {
+      setLoading(true);
+      try {
+        await axios.get(FETCH_URL).then((res) => {
+          setQuotes(res.data.data);
+        });
+        setLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+      const request = await axios.get(FETCH_URL);
+      setQuotes(request.data.data);
+    }
+    
     fetchQuotes();
   }, [FETCH_URL]);
 
