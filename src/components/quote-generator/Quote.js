@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
 import Navbar from "../nav-bar/Navbar";
+import Footer from "../footer/Footer";
 
 const Quote = () => {
   const [quote, setQuote] = useState([]);
@@ -38,6 +39,7 @@ const Quote = () => {
   return (
     <React.Fragment>
       <Navbar generateRandomQuote={fetchQuote} />
+      <Footer />
       <div className="w-6/7 md:w-1/2 mx-auto absolute custom">
 
         {!loading ? (
